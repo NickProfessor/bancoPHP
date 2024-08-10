@@ -8,7 +8,7 @@ Requisitos para executar esse projeto você precisará:
 - (Para windows) Que o local onde seu php está instalado esteja em suas variáveis de ambiente ([Como editar variáveis de ambiente](#comoEditar)).
 
 Para começar:
-Ao baixar o projeto, você precisará entrar na pasta raíz e executar o index.php. Assim:
+Ao baixar o projeto, você precisará entrar na pasta raíz pelo prompt e executar o index.php. Assim:
 
 ```
 cd ./bancoPHP
