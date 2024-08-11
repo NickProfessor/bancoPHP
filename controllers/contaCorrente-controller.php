@@ -28,7 +28,9 @@
                 echo "Conta precisa de um tipo";
                 die();
             }
-            echo "\n\tObrigado por se cadastrar, $nome!\n";
+            echo "\n\t================================================\n";
+            echo "\t|||||| Obrigado por se cadastrar, $nome |||||\n";
+            echo "\t================================================\n";
                 $this->contasCorrentes->adicionaContaCorrente($conta);
 
         }
