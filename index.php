@@ -95,7 +95,7 @@
             else if($operacao == "3"){
                 echo "\t------ CONSULTAR DADOS ------\n ";
                 $controller->dadosDaConta($conta);
-                echo "\t\n Pressione qualquer tecla...";
+                echo "\t\n Pressione enter...";
                 Banco::lerEntrada();
                 Banco::operacoesContaCorrente($conta, $controller);
             }
@@ -151,19 +151,19 @@
             if($operacao == "1"){
                 echo "\t------ TODAS AS CONTAS CADASTRADAS ------\n";
                 $controller->contasCorrentesCadastradas();
-                echo "\n\t Pressione qualquer tecla...";
+                echo "\n\t Pressione enter...";
                 Banco::lerEntrada();
                 Banco::operacoes($controller);
             }else if($operacao == "2"){
                 echo "\t------ TODAS AS CONTAS PF CADASTRADAS ------\n";
                 $controller->contasPFCadastradas();
-                echo "\n\t Pressione qualquer tecla...";
+                echo "\n\t Pressione enter...";
                 Banco::lerEntrada();
                 Banco::operacoes($controller);
             }else if($operacao == "3"){
                 echo "\t------ TODAS AS CONTAS PJ CADASTRADAS ------\n";
                 $controller->contasPJCadastradas();
-                echo "\n\t Pressione qualquer tecla...";
+                echo "\n\t Pressione enter...";
                 Banco::lerEntrada();
                 Banco::operacoes($controller);
             }else if($operacao == "4"){

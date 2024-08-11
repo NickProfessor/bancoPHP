@@ -11,6 +11,13 @@
 
         
         public function criaContaCorrente($nome, $numeroConta, $agencia, $tipo, $documento){
+            $contasExistentes = $this->contasCorrentes->listaDeContas();
+            foreach ($contasExistentes as $contasCorrente) {
+                if($contasCorrente->getNumeroDaCC() == $numeroConta){
+                    echo "\n\t CONTA JÁ EXISTE!!";
+                    return;
+                }
+            }
             if($tipo == "PF"){
             $conta = new ContaPF($nome,$numeroConta,$agencia, $tipo, $documento);
             $this->contasCorrentes->adicionaContaPF($conta);
@@ -23,7 +30,6 @@
             }
             echo "\n\tObrigado por se cadastrar, $nome!\n";
                 $this->contasCorrentes->adicionaContaCorrente($conta);
-                return $conta;
 
         }
 
