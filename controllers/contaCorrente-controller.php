@@ -27,6 +27,44 @@
 
         }
 
+        public function acessarUmaConta($numeroDaConta, $agencia){
+            $lista = $this->contasCorrentes->listaDeContas();
+            $conta = null;
+            foreach($lista as $key => $value) {
+                if($value->getNumeroDaCC() == $numeroDaConta 
+                && $value->getAgencia() == $agencia) {
+                    global $conta;
+                     $conta = $value;
+                     break;
+                }
+            }
+            return $conta;
+        }
+
+        public function sacarDinheiro($conta, $valor){
+            $lista = $this->contasCorrentes->listaDeContas();
+            foreach($lista as $key => $value) {
+                if($value == $conta) {
+                    $novoSaldo = $value->getSaldo() - $valor;
+                    $value->setSaldo($novoSaldo);
+                     break;
+                }
+            }
+
+        }
+
+        public function depositarDinheiro($conta, $valor){
+            $lista = $this->contasCorrentes->listaDeContas();
+            foreach($lista as $key => $value) {
+                if($value == $conta) {
+                    $novoSaldo = $value->getSaldo() + $valor;
+                    $value->setSaldo($novoSaldo);
+                     break;
+                }
+            }
+
+        }
+
         public function contasCorrentesCadastradas(){
             $lista = $this->contasCorrentes->listaDeContas()?? null;
             if(!$lista){
@@ -69,5 +107,7 @@
                 $this->dadosDaConta($conta);
             }
         }
+
+        
         
     }

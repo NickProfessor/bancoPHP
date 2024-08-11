@@ -25,6 +25,10 @@
         public function getTipo() {
             return $this->tipo;
         }
+        public function setSaldo($saldo) {
+            $this->saldo = $saldo;
+        }
+
 
         abstract public function getDocumento();
     }
