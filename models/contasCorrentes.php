@@ -1,30 +1,30 @@
 <?php
     class ContasCorrentes{
-    private $contasCorrentes = [];
-    private $contasPF = [];
-    private $contasPJ = [];
+    private array $contasCorrentes = [];
+    private array $contasPF = [];
+    private array $contasPJ = [];
 
-    public function adicionaContaCorrente($conta){
+    public function adicionaContaCorrente(ContaCorrente $conta): void{
         $this->contasCorrentes[] = $conta;
     }
 
-    public function adicionaContaPF($conta){
+    public function adicionaContaPF(ContaCorrente $conta): void{
         $this->contasPF[] = $conta;
     }
 
-    public function adicionaContaPJ($conta){
+    public function adicionaContaPJ(ContaCorrente $conta): void{
         $this->contasPJ[] = $conta;
     }
 
-     public  function listaDeContas(){
+     public  function listaDeContas(): array{
         return $this->contasCorrentes;
     }
 
-     public function listaDeContasPF(){
+     public function listaDeContasPF(): array{
         return $this->contasPF;
     }
 
-     public function listaDeContasPJ(){
+     public function listaDeContasPJ(): array{
         return $this->contasPJ;
     }
 }

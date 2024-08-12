@@ -1,14 +1,14 @@
 <?php
     include"./controllers/contaCorrente-controller.php";
     class Banco {
-        public static  function main (){
+        public static  function main (): void{
             $controller = new ContaCorrenteController();
             echo "\n\nSeja bem-vindo(a) ao Banco PHP!\n\n";
                 Banco::operacoes($controller);
               
         }
 
-        public static function operacoes ($controller) {
+        public static function operacoes (ContaCorrenteController $controller):void {
             echo"\n\tQue operação deseja fazer hoje?\n";
             Banco::template(1);
             $operacao = Banco::lerEntrada();
@@ -29,7 +29,7 @@
             }
         }
 
-        public static function acessarContaCorrente($controller){
+        public static function acessarContaCorrente(ContaCorrenteController $controller): void{
             echo "\t------ ACESSAR CONTA CORRENTE ------\n ";
             echo "\n\t1. Informe o numero da sua conta: ";
             $numeroConta = Banco::lerEntrada();
@@ -49,7 +49,7 @@
             }    
         }
 
-        public static function operacoesContaCorrente($conta, $controller){
+        public static function operacoesContaCorrente(ContaCorrente $conta, ContaCorrenteController $controller): void{
             echo "\t------ O QUE DESEJA? ------\n";
             Banco::template("4");
             $operacao = Banco::lerEntrada();
@@ -109,7 +109,7 @@
             }
             Banco::operacoesContaCorrente($conta, $controller);
         }
-        public static function criarContaCorrente ($controller) {
+        public static function criarContaCorrente (ContaCorrenteController $controller): void {
             Banco::template(2);
             $operacao = Banco::lerEntrada();
             while($operacao != "1" && $operacao != "2" && $operacao != "3") {
@@ -149,7 +149,7 @@
             Banco::operacoes($controller);
         }
 
-        public static function consultarContasCriadas($controller){
+        public static function consultarContasCriadas(ContaCorrenteController $controller): void{
             Banco::template(3);
             $operacao = Banco::lerEntrada();
             while($operacao != "1" && $operacao != "2"&& $operacao != "3" && $operacao != "4"){
@@ -180,7 +180,7 @@
             }
         }
 
-        public static function template($tipo){
+        public static function template(string $tipo): void{
             switch ($tipo){
                 case "1": 
                     echo"\t------ OPÇÕES ------\n";
@@ -216,10 +216,10 @@
             }
         }
 
-        public static function lerEntrada () {
+        public static function lerEntrada (): string {
             return trim(fgets(STDIN));
         }
-        public static function cpfValido($cpf){
+        public static function cpfValido(string $cpf): bool{
             // Remove caracteres especiais (ponto e hífen)
             $cpf = preg_replace('/[^0-9]/', '', $cpf);
 
@@ -248,7 +248,7 @@
             return true;
         }
 
-        public static function cnpjValido($cnpj) {
+        public static function cnpjValido(string $cnpj): bool {
             // Remove caracteres especiais (ponto, hífen e barra)
             $cnpj = preg_replace('/[^0-9]/', '', $cnpj);
         

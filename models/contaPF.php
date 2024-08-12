@@ -1,10 +1,10 @@
 <?php
 include"./models/contaCorrente.php";
 class ContaPF extends ContaCorrente{
-    protected $tipo = "PF";
-    private $cpf;
+    protected string $tipo = "PF";
+    private string $cpf;
 
-    public function __construct($nome, $contaCorrente, $agencia, $tipo, $documento) {
+    public function __construct(string $nome, int $contaCorrente, int $agencia, string $tipo, string $documento) {
         $this->nomeDoUser = $nome;
         $this->numeroDaCC = $contaCorrente;
         $this->agencia = $agencia;
@@ -12,7 +12,7 @@ class ContaPF extends ContaCorrente{
         $this->cpf = $documento;
     }
 
-    public function getDocumento(){
+    public function getDocumento(): string{
         return $this->cpf;
     }
 }

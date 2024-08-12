@@ -1,34 +1,34 @@
 <?php
     abstract class ContaCorrente {
-        protected $nomeDoUser;
-        protected $numeroDaCC;
-        protected $agencia;
-        protected $saldo = 0;
-        protected $tipo;
+        protected string $nomeDoUser;
+        protected int $numeroDaCC;
+        protected int $agencia;
+        protected float $saldo = 0;
+        protected string $tipo;
 
-        protected $documento;
+        protected string $documento;
         
-        abstract public function __construct($nomeDoUser, $numeroDaCC, $agencia, $tipo, $documento);
-        public function getNomeDoUser() {
+        abstract public function __construct(string $nomeDoUser, int $numeroDaCC, int $agencia, string $tipo, string $documento);
+        public function getNomeDoUser(): string {
             return $this->nomeDoUser;
         }
-        public function getNumeroDaCC() {
+        public function getNumeroDaCC(): int {
             return $this->numeroDaCC;
         }
-        public function getAgencia(){
+        public function getAgencia(): int {
             return $this->agencia;
         }
-        public function getSaldo() {
+        public function getSaldo(): float {
             return $this->saldo;
         }
 
-        public function getTipo() {
+        public function getTipo(): string {
             return $this->tipo;
         }
-        public function setSaldo($saldo) {
+        public function setSaldo($saldo): void {
             $this->saldo = $saldo;
         }
 
 
-        abstract public function getDocumento();
+        abstract public function getDocumento(): string;
     }

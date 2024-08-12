@@ -3,14 +3,14 @@
     include"./models/contaPF.php";
     include"./models/contaPJ.php";
     class ContaCorrenteController {
-        private $contasCorrentes;
+        private ContasCorrentes $contasCorrentes;
 
         public function __construct() {
             $this->contasCorrentes = new ContasCorrentes();
         }
 
         
-        public function criaContaCorrente($nome, $numeroConta, $agencia, $tipo, $documento){
+        public function criaContaCorrente(string $nome, int $numeroConta, int $agencia, string $tipo, string $documento): void{
             $contasExistentes = $this->contasCorrentes->listaDeContas();
             foreach ($contasExistentes as $contasCorrente) {
                 if($contasCorrente->getNumeroDaCC() == $numeroConta){
@@ -35,7 +35,7 @@
 
         }
 
-        public function acessarUmaConta($numeroDaConta, $agencia){
+        public function acessarUmaConta(int $numeroDaConta, int $agencia): ContaCorrente | null{
             $lista = $this->contasCorrentes->listaDeContas();
             $conta = null;
             foreach($lista as $key => $value) {
@@ -49,7 +49,7 @@
             return $conta;
         }
 
-        public function sacarDinheiro($conta, $valor){
+        public function sacarDinheiro(ContaCorrente $conta, float $valor): void{
             $lista = $this->contasCorrentes->listaDeContas();
             foreach($lista as $key => $value) {
                 if($value == $conta) {
@@ -61,7 +61,7 @@
 
         }
 
-        public function depositarDinheiro($conta, $valor){
+        public function depositarDinheiro(ContaCorrente $conta, float $valor){
             $lista = $this->contasCorrentes->listaDeContas();
             foreach($lista as $key => $value) {
                 if($value == $conta) {
@@ -73,7 +73,7 @@
 
         }
 
-        public function contasCorrentesCadastradas(){
+        public function contasCorrentesCadastradas(): void{
             $lista = $this->contasCorrentes->listaDeContas()?? null;
             if(!$lista){
                 echo "\t NENHUMA CONTA CADASTRADA\n";
@@ -81,7 +81,7 @@
             $this->percorreALista($lista);
         }
 
-        public function contasPFCadastradas(){
+        public function contasPFCadastradas(): void{
             $lista = $this->contasCorrentes->listaDeContasPF()?? null;
             if(!$lista){
                 echo "\t NENHUMA CONTA PF CADASTRADA\n";
@@ -89,14 +89,14 @@
             $this->percorreALista($lista);
         }
 
-        public function contasPJCadastradas(){
+        public function contasPJCadastradas(): void{
             $lista = $this->contasCorrentes->listaDeContasPJ()?? null;
             if(!$lista){
                 echo "\t NENHUMA CONTA PJ CADASTRADA\n";
             }
             $this->percorreALista($lista);
         }
-        public  function dadosDaConta ($contaCorrente){
+        public  function dadosDaConta (ContaCorrente $contaCorrente): void{
             echo "\tNome: ". $contaCorrente->getNomeDoUser()."\n";
             echo "\tConta corrente: ". $contaCorrente->getNumeroDaCC()."\n";
             echo "\tAgência: ". $contaCorrente->getAgencia()."\n";
@@ -109,7 +109,7 @@
             }
         }
 
-        private function percorreALista($lista){
+        private function percorreALista($lista): void{
             foreach ($lista as $key => $conta) {
                 echo"\n\t------ Conta ".($key + 1)." ------\n";
                 $this->dadosDaConta($conta);
